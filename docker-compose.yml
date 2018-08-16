@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  http-knocking:
+    image: nwtgck/http-knocking:v0.1.0
+    ports:
+      - '8282:8282'
+    depends_on:
+      - ghost
+    restart: always
+    command: --port=8282 --target-url=http://ghost:2368 --open-knocking="/alpha,/foxtrot,/lima"
+  ghost:
+    image: ghost
+    restart: always
+    expose:
+      - "2368"
