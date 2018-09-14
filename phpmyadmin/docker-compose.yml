@@ -1,0 +1,33 @@
+# (from: https://morizyun.github.io/docker/docker-compose-mysql-phpmyadmin.html)
+# (from: https://qiita.com/furu8ma/items/50718efebee20fd24517)
+
+version: '3.1'
+
+services:
+  http-knocking:
+    image: nwtgck/http-knocking:v0.7.0
+    ports:
+      - '8282:8282'
+    depends_on:
+      - phpmyadmin
+    restart: always
+    command: --port=8282 --target-host=phpmyadmin --target-port=80 --open-knocking="/alpha,/foxtrot,/lima" --enable-empty-response
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - "./docker_volumes/mysql:/var/lib/mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+    restart: always
+    links:
+      - mysql:mysql
+    expose:
+      - 80
+    volumes:
+      - ./docker_volumes/phpmyadmin_sessions:/sessions
