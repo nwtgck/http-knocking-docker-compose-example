@@ -24,3 +24,10 @@ After running server, go to <http://localhost:8282/>. However, you should see a 
 Then, you will see a phpMyAdmin page!
 
 You can close the site by the reverse order.
+
+## Inputs
+
+You can use the following inputs in the login page.
+- "mysql" for Server input
+- "root" for Username input
+- "password" for Password input
