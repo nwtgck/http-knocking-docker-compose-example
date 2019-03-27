@@ -1,4 +1,4 @@
-# ghoast
+# ghost
 Example of [http-knocking](https://github.com/nwtgck/http-knocking) on Docker Compose for [Ghost](https://ghost.org/), which is a the open source platform for professional publishers.
 
 ![ghoast HTTP Knocking](../demo_images/ghost.gif)
